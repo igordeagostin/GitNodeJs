@@ -1,11 +1,106 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>
+    <%= title %>
+  </h1>
+  <form method="POST" onload="carrega()">
+    <a>Comandos:</a>
+    <select id="listadecomandos" onblur="carregaOpcoes()" onchange="carrega()">
+  
+    </select>
+    <a class="descricaoopcoes">Opções:</a>
+    <select id="listadeopcoes">
+    
+</select>
+    <br>
+    <a>Descrição do comando:<a>
+       <a class="lista">Descrição da opção:<a>
+    <br>
+    
+    <textarea rows="10" cols="40px" maxlength="500" id="descricaocomandos"></textarea> 
+    <textarea rows="10" cols="40px" maxlength="500" id="descricaoopcoes" class="caixaopcoes"></textarea>
+    <br>
+    <br>
+    <!--<input type="submit" value="OK" />-->
+  </form>
+
+  <a>EM DESENVOLVIMENTO...</a>
+</body>
+
 </html>
+
+<script>
+                                         var nomecomando;
+
+
+                                         var select = document.getElementById("listadecomandos");
+                                         var options = ["", "commit", "status"];
+                                         for (var i = 0; i < options.length; i++) {
+                                           var opt = options[i];
+                                           var el = document.createElement("option");
+                                           el.textContent = opt;
+                                           el.value = opt;
+                                           select.appendChild(el);
+                                         }
+
+                                         function carrega() {
+                                           var opcao = document.getElementById('listadecomandos').value;
+                                           for (var i = 0; i < comandos.length; i++) {
+                                             if (comandos[i].nome === opcao) {
+                                               nomecomando = comandos[i];
+                                             }
+                                           }
+                                           if (opcao === "commit") {
+                                             document.getElementById('descricaocomandos').value = nomecomando.descricao;
+                                           }
+                                           if (opcao === "status") {
+                                             document.getElementById('descricaocomandos').value = nomecomando.descricao;
+                                           }
+                                           if (opcao === "") {
+                                             document.getElementById('descricaocomandos').value = "";
+                                           }
+                                         }
+
+                                         function carregaOpcoes() {
+                                           var opcao = document.getElementById('listadecomandos').value;
+
+                                           for (var i = 0; i < comandos.length; i++) {
+                                             if (comandos[i].nome === opcao) {
+                                               nomecomando = comandos[i];
+                                             }
+                                           }
+
+                                           var select = document.getElementById("listadeopcoes");
+                                           var options = nomecomando.opcoes;
+                                           for (var i = 0; i < options.length; i++) {
+                                             var opt = options[i];
+                                             var el = document.createElement("option");
+                                             el.textContent = opt;
+                                             el.value = opt;
+                                             select.appendChild(el);
+                                           }
+                                         }
+
+                                         var comandos = [
+                                           {
+                                             nome: 'commit',
+                                             descricao: 'Grava as alterações feitas no repositório, é preciso que as mesma sejam adicionadas',
+                                             opcoes: ["-a", "-m"]
+                                           },
+                                           {
+                                             nome: 'status',
+                                             descricao: 'xxx',
+                                             opcoes: ["fsdf", "D"]
+                                           }
+                                         ]
+
+</script>
