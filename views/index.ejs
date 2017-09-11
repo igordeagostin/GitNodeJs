@@ -16,19 +16,15 @@
   <form method="POST" onload="carrega()">
     <a>Comandos:</a>
     <select id="listadecomandos" onchange="carrega(), carregaOpcoes()">
-  
-    </select>
-    <a class="descricaoopcoes">Opções:</a>
-    <select id="listadeopcoes">
-    
 </select>
     <br>
+    <br>
     <a>Descrição do comando:<a>
-       <a class="lista">Descrição da opção:<a>
+       <a class="lista">Como usar e opções:<a>
     <br>
     
-    <textarea rows="10" cols="40px" maxlength="500" id="descricaocomandos"></textarea> 
-    <textarea rows="10" cols="40px" maxlength="500" id="descricaoopcoes" class="caixaopcoes"></textarea>
+    <textarea rows="30" cols="60px" maxlength="500" id="descricaocomandos"></textarea> 
+    <textarea rows="30" cols="100px" maxlength="500" id="descricaoopcoes" class="caixaopcoes"></textarea>
     <br>
     <br>
     <!--<input type="submit" value="OK" />-->
@@ -40,11 +36,49 @@
 </html>
 <script>
    var nomecomando;
+
+
+var select = document.getElementById("listadecomandos");
+var options = ["","add", "bisect", "branch", "checkout", "clone","commit", "diff", "fetch", "grep", "init", "log",
+"merge", "mv", "push","pull", "rebase", "rm", "reset","show", "status", "tag"];
+for (var i = 0; i < options.length; i++) {
+  var opt = options[i];
+  var el = document.createElement("option");
+  el.textContent = opt;
+  el.value = opt;
+  select.appendChild(el);
+}
+
+function carrega() {
+  var opcao = document.getElementById('listadecomandos').value;
+  for (var i = 0; i < comandos.length; i++) {
+    if (comandos[i].nome === opcao) {
+      nomecomando = comandos[i];
+      document.getElementById('descricaocomandos').value = nomecomando.descricao;
+    }
+  } 
+}
+
+function carregaOpcoes() {
+  var opcao = document.getElementById('listadecomandos').value;
+  for (var i = 0; i < comandos.length; i++) {
+    if (comandos[i].nome === opcao) {
+      nomecomando = comandos[i];
+      document.getElementById('descricaoopcoes').value = nomecomando.opcoes;
+    }
+  }
+}
+
+
 var comandos = [
   {
     nome: 'commit',
     descricao: 'Grava as alterações feitas no repositório, é preciso que as mesmas sejam adicionadas',
-    opcoes: ["-a", "-m"]
+    opcoes: ["--------------------------------------------------------------------------\n"+
+    "Uso: git commit [-opção]\nExemplo: git commit -a -m \"Commit de teste\"\n"+
+    "--------------------------------------------------------------------------"+
+    "\nOpções:\n" +
+    "-q: simplifique o resumo após o commit bem sucedido"]
   },
   {
     nome: 'status',
@@ -131,111 +165,21 @@ var comandos = [
     descricao: 'xxx',
     opcoes: ["fsdf", "D"]
   },
-  
-
-  
-
+  {
+    nome: 'push',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'pull',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'fetch',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
 ]
-
-var select = document.getElementById("listadecomandos");
-var options = ["","add", "bisect", "branch", "checkout", "clone","commit", "diff", "grep", "init", "log",
-"merge", "mv", "rebase", "rm", "reset","show", "status", "tag"];
-for (var i = 0; i < options.length; i++) {
-  var opt = options[i];
-  var el = document.createElement("option");
-  el.textContent = opt;
-  el.value = opt;
-  select.appendChild(el);
-}
-
-function carrega() {
-  var opcao = document.getElementById('listadecomandos').value;
-  for (var i = 0; i < comandos.length; i++) {
-    if (comandos[i].nome === opcao) {
-      nomecomando = comandos[i];
-    }
-  }
-  if (opcao === "tag") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "show") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "reset") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "rm") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "rebase") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "mv") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "merge") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "log") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "init") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "grep") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "diff") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "clone") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "add") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "bisect") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "checkout") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "commit") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "status") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "clone") {
-    document.getElementById('descricaocomandos').value = nomecomando.descricao;
-  }
-  if (opcao === "") {
-    document.getElementById('descricaocomandos').value = "";
-  }
-}
-
-function carregaOpcoes() {
-  var opcao = document.getElementById('listadecomandos').value;
-  var select = document.getElementById("listadeopcoes");
-  var j = select.length;
-  for (var i = 0; i < j; i++) {
-    select.remove(0);
-  }
-
-  for (var i = 0; i < comandos.length; i++) {
-    if (comandos[i].nome === opcao) {
-      nomecomando = comandos[i];
-    }
-  }
-
-  var options = nomecomando.opcoes;
-  for (var i = 0; i < options.length; i++) {
-    var opt = options[i];
-    var el = document.createElement("option");
-    el.textContent = opt;
-    el.value = opt;
-    select.appendChild(el);
-  }
-}
 
 </script>

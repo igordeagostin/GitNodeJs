@@ -8,11 +8,12 @@ a {
 }
 
 .lista{
-  margin-left: 180px;
+  margin-left: 312px;
 }
 
 .caixaopcoes{
   margin-left: 20px;
+  position: absolute;
 }
 
 .descricaoopcoes{
