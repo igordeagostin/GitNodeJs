@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -37,72 +38,204 @@
 </body>
 
 </html>
-
 <script>
-                                         var nomecomando;
-                                         var comandos = [
-                                           {
-                                             nome: 'commit',
-                                             descricao: 'Grava as alterações feitas no repositório, é preciso que as mesma sejam adicionadas',
-                                             opcoes: ["-a", "-m"]
-                                           },
-                                           {
-                                             nome: 'status',
-                                             descricao: 'xxx',
-                                             opcoes: ["fsdf", "D"]
-                                           }
-                                         ]
+   var nomecomando;
+var comandos = [
+  {
+    nome: 'commit',
+    descricao: 'Grava as alterações feitas no repositório, é preciso que as mesmas sejam adicionadas',
+    opcoes: ["-a", "-m"]
+  },
+  {
+    nome: 'status',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'clone',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'init',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'add',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'mv',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'reset',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'rm',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'bisect',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'grep',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'log',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'show',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'branch',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'checkout',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'diff',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'merge',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'rebase',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  {
+    nome: 'tag',
+    descricao: 'xxx',
+    opcoes: ["fsdf", "D"]
+  },
+  
 
-                                         var select = document.getElementById("listadecomandos");
-                                         var options = ["", "commit", "status"];
-                                         for (var i = 0; i < options.length; i++) {
-                                           var opt = options[i];
-                                           var el = document.createElement("option");
-                                           el.textContent = opt;
-                                           el.value = opt;
-                                           select.appendChild(el);
-                                         }
+  
 
-                                         function carrega() {
-                                           var opcao = document.getElementById('listadecomandos').value;
-                                           for (var i = 0; i < comandos.length; i++) {
-                                             if (comandos[i].nome === opcao) {
-                                               nomecomando = comandos[i];
-                                             }
-                                           }
-                                           if (opcao === "commit") {
-                                             document.getElementById('descricaocomandos').value = nomecomando.descricao;
-                                           }
-                                           if (opcao === "status") {
-                                             document.getElementById('descricaocomandos').value = nomecomando.descricao;
-                                           }
-                                           if (opcao === "") {
-                                             document.getElementById('descricaocomandos').value = "";
-                                           }
-                                         }
+]
 
-                                         function carregaOpcoes() {
-                                           var opcao = document.getElementById('listadecomandos').value;
-                                          var select = document.getElementById("listadeopcoes");
-                                           var j = select.length;
-                                              for(var i = 0; i < j ; i++){
-                                                select.remove(0);
-                                                }
+var select = document.getElementById("listadecomandos");
+var options = ["","add", "bisect", "branch", "checkout", "clone","commit", "diff", "grep", "init", "log",
+"merge", "mv", "rebase", "rm", "reset","show", "status", "tag"];
+for (var i = 0; i < options.length; i++) {
+  var opt = options[i];
+  var el = document.createElement("option");
+  el.textContent = opt;
+  el.value = opt;
+  select.appendChild(el);
+}
 
-                                           for (var i = 0; i < comandos.length; i++) {
-                                             if (comandos[i].nome === opcao) {
-                                               nomecomando = comandos[i];
-                                             }
-                                           }
-                                           
-                                           var options = nomecomando.opcoes;
-                                           for (var i = 0; i < options.length; i++) {
-                                             var opt = options[i];
-                                             var el = document.createElement("option");
-                                             el.textContent = opt;
-                                             el.value = opt;
-                                             select.appendChild(el);
-                                           }
-                                         }
+function carrega() {
+  var opcao = document.getElementById('listadecomandos').value;
+  for (var i = 0; i < comandos.length; i++) {
+    if (comandos[i].nome === opcao) {
+      nomecomando = comandos[i];
+    }
+  }
+  if (opcao === "tag") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "show") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "reset") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "rm") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "rebase") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "mv") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "merge") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "log") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "init") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "grep") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "diff") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "clone") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "add") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "bisect") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "checkout") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "commit") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "status") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "clone") {
+    document.getElementById('descricaocomandos').value = nomecomando.descricao;
+  }
+  if (opcao === "") {
+    document.getElementById('descricaocomandos').value = "";
+  }
+}
+
+function carregaOpcoes() {
+  var opcao = document.getElementById('listadecomandos').value;
+  var select = document.getElementById("listadeopcoes");
+  var j = select.length;
+  for (var i = 0; i < j; i++) {
+    select.remove(0);
+  }
+
+  for (var i = 0; i < comandos.length; i++) {
+    if (comandos[i].nome === opcao) {
+      nomecomando = comandos[i];
+    }
+  }
+
+  var options = nomecomando.opcoes;
+  for (var i = 0; i < options.length; i++) {
+    var opt = options[i];
+    var el = document.createElement("option");
+    el.textContent = opt;
+    el.value = opt;
+    select.appendChild(el);
+  }
+}
 
 </script>
