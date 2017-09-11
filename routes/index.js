@@ -3,7 +3,7 @@ var router = express.Router();
 var usuario = [];
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'GitHelp', comandos: comandos, servidor: ''});
+  res.render('index', { title: 'GitHelp', comandos: '', servidor: ''});
 });
 
 router.post('/', function(req, res, next) {

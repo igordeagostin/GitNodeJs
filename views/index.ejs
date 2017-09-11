@@ -40,7 +40,19 @@
 
 <script>
                                          var nomecomando;
-
+                                         
+                                         var comandos = [
+                                           {
+                                             nome: 'commit',
+                                             descricao: 'Grava as alterações feitas no repositório, é preciso que as mesma sejam adicionadas',
+                                             opcoes: ["-a", "-m"]
+                                           },
+                                           {
+                                             nome: 'status',
+                                             descricao: 'xxx',
+                                             opcoes: ["fsdf", "D"]
+                                           }
+                                         ]
 
                                          var select = document.getElementById("listadecomandos");
                                          var options = ["", "commit", "status"];
@@ -90,17 +102,6 @@
                                            }
                                          }
 
-                                         var comandos = [
-                                           {
-                                             nome: 'commit',
-                                             descricao: 'Grava as alterações feitas no repositório, é preciso que as mesma sejam adicionadas',
-                                             opcoes: ["-a", "-m"]
-                                           },
-                                           {
-                                             nome: 'status',
-                                             descricao: 'xxx',
-                                             opcoes: ["fsdf", "D"]
-                                           }
-                                         ]
+                                         
 
 </script>
