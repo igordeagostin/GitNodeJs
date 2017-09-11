@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
 <html>
-
 <head>
+  <!--<script language="JavaScript" src="/public/javascripts/util.js" type="text/javascript"></script>-->
   <title>
     <%= title %>
   </title>
@@ -23,8 +23,8 @@
        <a class="lista">Como usar e opções:<a>
     <br>
     
-    <textarea rows="30" cols="60px" maxlength="500" id="descricaocomandos"></textarea> 
-    <textarea rows="30" cols="100px" maxlength="500" id="descricaoopcoes" class="caixaopcoes"></textarea>
+    <textarea rows="25" cols="60px" maxlength="500" id="descricaocomandos"></textarea> 
+    <textarea rows="25" cols="100px" maxlength="500" id="descricaoopcoes" class="caixaopcoes"></textarea>
     <br>
     <br>
     <!--<input type="submit" value="OK" />-->
@@ -34,152 +34,162 @@
 </body>
 
 </html>
+
 <script>
-   var nomecomando;
+var nomecomando;
 
 
 var select = document.getElementById("listadecomandos");
-var options = ["","add", "bisect", "branch", "checkout", "clone","commit", "diff", "fetch", "grep", "init", "log",
-"merge", "mv", "push","pull", "rebase", "rm", "reset","show", "status", "tag"];
+var options = ["", "add", "bisect", "branch", "checkout", "clone", "commit", "diff", "fetch", "grep", "init", "log",
+    "merge", "mv", "push", "pull", "rebase", "rm", "reset", "show", "status", "tag"];
 for (var i = 0; i < options.length; i++) {
-  var opt = options[i];
-  var el = document.createElement("option");
-  el.textContent = opt;
-  el.value = opt;
-  select.appendChild(el);
+    var opt = options[i];
+    var el = document.createElement("option");
+    el.textContent = opt;
+    el.value = opt;
+    select.appendChild(el);
 }
 
 function carrega() {
-  var opcao = document.getElementById('listadecomandos').value;
-  for (var i = 0; i < comandos.length; i++) {
-    if (comandos[i].nome === opcao) {
-      nomecomando = comandos[i];
-      document.getElementById('descricaocomandos').value = nomecomando.descricao;
+    var opcao = document.getElementById('listadecomandos').value;
+    for (var i = 0; i < comandos.length; i++) {
+        if (comandos[i].nome === opcao) {
+            nomecomando = comandos[i];
+            document.getElementById('descricaocomandos').value = nomecomando.descricao;
+        }
     }
-  } 
 }
 
 function carregaOpcoes() {
-  var opcao = document.getElementById('listadecomandos').value;
-  for (var i = 0; i < comandos.length; i++) {
-    if (comandos[i].nome === opcao) {
-      nomecomando = comandos[i];
-      document.getElementById('descricaoopcoes').value = nomecomando.opcoes;
+    var opcao = document.getElementById('listadecomandos').value;
+    for (var i = 0; i < comandos.length; i++) {
+        if (comandos[i].nome === opcao) {
+            nomecomando = comandos[i];
+            document.getElementById('descricaoopcoes').value = nomecomando.opcoes;
+        }
     }
-  }
 }
 
 
 var comandos = [
-  {
-    nome: 'commit',
-    descricao: 'Grava as alterações feitas no repositório, é preciso que as mesmas sejam adicionadas',
-    opcoes: ["--------------------------------------------------------------------------\n"+
-    "Uso: git commit [-opção]\nExemplo: git commit -a -m \"Commit de teste\"\n"+
-    "--------------------------------------------------------------------------"+
-    "\nOpções:\n" +
-    "-q: simplifique o resumo após o commit bem sucedido"]
-  },
-  {
-    nome: 'status',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'clone',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'init',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'add',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'mv',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'reset',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'rm',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'bisect',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'grep',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'log',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'show',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'branch',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'checkout',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'diff',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'merge',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'rebase',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'tag',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'push',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'pull',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
-  {
-    nome: 'fetch',
-    descricao: 'xxx',
-    opcoes: ["fsdf", "D"]
-  },
+    {
+        nome: 'commit',
+        descricao: 'Grava as alterações feitas no repositório, é preciso que as mesmas sejam adicionadas',
+        opcoes: ["--------------------------------------------------------------------------\n\n" +
+            "Uso: git commit [-opção]\nExemplo: git commit -a -m \"Commit de teste\"\n\n" +
+            "--------------------------------------------------------------------------" +
+            "\n\nPrincipais opções:\n" +
+            "-a: Adiciona todos os arquivos modificados e excluídos no commit, porém os novos arquivos não são afetados;\n" + 
+            "-m: Informe uma mensagem para o commit. Ex.: git commit -m \"Mensagem\"; " + 
+             "\n\n--------------------------------------------------------------------------" +
+            "\n\nTodas as opções: https://git-scm.com/docs/git-commit"]
+    },
+    {
+        nome: 'status',
+        descricao: 'Exibe arquivos que foram modificados ou inseridos e que ainda não foram comitados',
+        opcoes: ["--------------------------------------------------------------------------\n\n" +
+            "Uso: git status [-opção]\nExemplo: git status -s b\n\n" +
+            "--------------------------------------------------------------------------" +
+            "\n\nPrincipais opções:\n" +
+            "-s: Exibe os arquivos modificados, inseridos e excluídos em um formato simples;\n" + 
+            "--ignored: Mostra os arquivos ignorados; " + 
+             "\n\n--------------------------------------------------------------------------" +
+            "\n\nTodas as opções: https://git-scm.com/docs/git-status"]
+    },
+    {
+        nome: 'clone',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'init',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'add',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'mv',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'reset',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'rm',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'bisect',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'grep',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'log',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'show',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'branch',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'checkout',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'diff',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'merge',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'rebase',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'tag',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'push',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'pull',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
+    {
+        nome: 'fetch',
+        descricao: 'xxx',
+        opcoes: ["fsdf", "D"]
+    },
 ]
-
 </script>
