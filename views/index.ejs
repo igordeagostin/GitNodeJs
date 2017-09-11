@@ -14,7 +14,7 @@
   </h1>
   <form method="POST" onload="carrega()">
     <a>Comandos:</a>
-    <select id="listadecomandos" onblur="carregaOpcoes()" onchange="carrega()">
+    <select id="listadecomandos" onchange="carrega(), carregaOpcoes()">
   
     </select>
     <a class="descricaoopcoes">Opções:</a>
@@ -40,7 +40,6 @@
 
 <script>
                                          var nomecomando;
-                                         
                                          var comandos = [
                                            {
                                              nome: 'commit',
@@ -84,14 +83,18 @@
 
                                          function carregaOpcoes() {
                                            var opcao = document.getElementById('listadecomandos').value;
+                                          var select = document.getElementById("listadeopcoes");
+                                           var j = select.length;
+                                              for(var i = 0; i < j ; i++){
+                                                select.remove(0);
+                                                }
 
                                            for (var i = 0; i < comandos.length; i++) {
                                              if (comandos[i].nome === opcao) {
                                                nomecomando = comandos[i];
                                              }
                                            }
-
-                                           var select = document.getElementById("listadeopcoes");
+                                           
                                            var options = nomecomando.opcoes;
                                            for (var i = 0; i < options.length; i++) {
                                              var opt = options[i];
@@ -101,7 +104,5 @@
                                              select.appendChild(el);
                                            }
                                          }
-
-                                         
 
 </script>
