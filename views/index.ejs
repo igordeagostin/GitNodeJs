@@ -130,8 +130,16 @@ var comandos = [
     },
     {
         nome: 'clone',
-        descricao: 'xxx',
-        opcoes: ["fsdf", "D"]
+        descricao: 'Clona um repositório em um diretório recém criado.\nApós ser clonado é' + 
+        ' necessário usar git fetch para atualizar todos os branchs e um git pull para atualizar os arquivos.',
+        opcoes: ["--------------------------------------------------------------------------\n\n" +
+            "Uso: git status [-opção]\nExemplo: git status -s b\n\n" +
+            "--------------------------------------------------------------------------" +
+            "\n\nPrincipais opções:\n" +
+            "-s: Exibe os arquivos modificados, inseridos e excluídos em um formato simples;\n" + 
+            "--ignored: Mostra os arquivos ignorados; " + 
+             "\n\n--------------------------------------------------------------------------" +
+            "\n\nTodas as opções: https://git-scm.com/docs/git-status"]
     },
     {
         nome: 'init',
